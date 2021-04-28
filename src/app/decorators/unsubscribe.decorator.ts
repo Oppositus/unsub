@@ -15,24 +15,22 @@ export function Unsubscribe(): (target: any, key: string) => void {
       // "this" value is defined by call component.ngOnDestroy()
 
       // Unsubscribe
-      if (Array.isArray(target.__unsubscribeArray)) {
-        target.__unsubscribeArray.forEach((sub: string) => {
-          try {
-            console.log('Unsubscribe from', sub);
-            // @ts-ignore
-            this[sub].unsubscribe();
-          } catch (e) { } // nothing
-        });
-      }
+      target.__unsubscribeArray__.forEach((sub: string) => {
+        try {
+          console.log('Unsubscribe from', sub);
+          // @ts-ignore
+          this[sub].unsubscribe();
+        } catch (e) { } // nothing
+      });
 
       // And call ngOnDestroy
       // @ts-ignore
-      target.__savedNgOnDestroy.call(this);
+      target.__savedNgOnDestroy__.call(this);
     }
 
-    // Add __unsubscribeArray to target prototype
-    if (target.__unsubscribeArray === undefined) {
-      Object.defineProperty(target, '__unsubscribeArray', {
+    // Add __unsubscribeArray__ to target prototype
+    if (target.__unsubscribeArray__ === undefined) {
+      Object.defineProperty(target, '__unsubscribeArray__', {
         configurable: false,
         enumerable: false,
         writable: false,
@@ -40,9 +38,9 @@ export function Unsubscribe(): (target: any, key: string) => void {
       });
     }
 
-    // Add __savedNgOnDestroy to target prototype with saved ngOnDestroy
-    if (target.__savedNgOnDestroy === undefined) {
-      Object.defineProperty(target, '__savedNgOnDestroy', {
+    // Add __savedNgOnDestroy__ to target prototype with saved ngOnDestroy
+    if (target.__savedNgOnDestroy__ === undefined) {
+      Object.defineProperty(target, '__savedNgOnDestroy__', {
         configurable: false,
         enumerable: false,
         writable: false,
@@ -51,7 +49,7 @@ export function Unsubscribe(): (target: any, key: string) => void {
     }
 
     // Push subscription field name to unsubscribe array
-    target.__unsubscribeArray.push(key);
+    target.__unsubscribeArray__.push(key);
 
     // Replace ngOnDestroy. Multiple replace is ok.
     target.ngOnDestroy = unsub;
