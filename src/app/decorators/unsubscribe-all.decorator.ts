@@ -14,8 +14,7 @@ export function UnsubscribeAll(): (constructor: new (...args: any[]) => void) =>
             try {
               console.log('Unsubscribe', sub);
               sub.unsubscribe();
-            } catch (e) {
-            } // nothing;
+            } catch (e) { } // nothing;
           });
 
         // @ts-ignore
