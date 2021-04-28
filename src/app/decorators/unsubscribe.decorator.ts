@@ -40,16 +40,13 @@ export function Unsubscribe(): (target: any, key: string) => void {
       });
     }
 
-    // Save ngOnDestroy from target prototype
-    const savedNgOnDestroy = target.ngOnDestroy || (() => {});
-
-    // Add __savedNgOnDestroy to target prototype
+    // Add __savedNgOnDestroy to target prototype with saved ngOnDestroy
     if (target.__savedNgOnDestroy === undefined) {
       Object.defineProperty(target, '__savedNgOnDestroy', {
         configurable: false,
         enumerable: false,
         writable: false,
-        value: savedNgOnDestroy
+        value: target.ngOnDestroy || (() => {})
       });
     }
 
