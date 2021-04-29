@@ -9,7 +9,7 @@ function autoDestroyProtoNgOnDestroy(): void {
   });
 
   // @ts-ignore
-  this.__unsubscribeSubjects__.subjects.splice(0, -1);
+  this.__unsubscribeSubjects__.subjects.splice(0, this.__unsubscribeSubjects__.subjects.length);
   // @ts-ignore
   this.__autoDestroyNgOnDestroy__.call(this);
 
