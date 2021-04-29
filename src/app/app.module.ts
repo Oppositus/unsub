@@ -6,6 +6,7 @@ import { SubsComponent } from './components/subs/subs.component';
 import { SubsNoDestroyComponent } from './components/subs-no-destroy/subs-no-destroy.component';
 import { UnsubscribeAllComponent } from './components/unsubscribe-all/unsubscribe-all.component';
 import { UnsubscribeMixComponent } from './components/unsubscribe-mix/unsubscribe-mix.component';
+import { MixAllComponent } from './components/mix-all/mix-all.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { UnsubscribeMixComponent } from './components/unsubscribe-mix/unsubscrib
     SubsComponent,
     SubsNoDestroyComponent,
     UnsubscribeAllComponent,
-    UnsubscribeMixComponent
+    UnsubscribeMixComponent,
+    MixAllComponent
   ],
   imports: [
     BrowserModule
